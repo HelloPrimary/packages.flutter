@@ -6,6 +6,7 @@ import Cocoa
 import FlutterMacOS
 #endif
 import CoreGraphics
+import pdfx_objc
 
 public class SwiftPdfxPlugin: NSObject, FlutterPlugin, PdfxApi {
     let registrar: FlutterPluginRegistrar

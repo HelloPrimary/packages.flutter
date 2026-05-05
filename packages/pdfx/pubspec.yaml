@@ -36,7 +36,7 @@ flutter:
         package: io.scer.pdfx
         pluginClass: PdfxPlugin
       ios:
-        pluginClass: PdfxPlugin
+        pluginClass: SwiftPdfxPlugin
       macos:
         pluginClass: PdfxPlugin
       windows:

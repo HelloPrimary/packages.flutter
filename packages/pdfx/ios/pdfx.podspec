@@ -14,11 +14,10 @@ Downloaded by pub (not CocoaPods).
   s.license          = { :type => 'MIT', :file => '../LICENSE' }
   s.author           = { 'Serge Shkurko' => 'sergeshkurko@outlook.com' }
   s.source           = { :http => 'https://github.com/ScerIO/packages.flutter/tree/main/packages/pdfx' }
-  s.source_files = 'Classes/**/*'
+  s.source_files = 'pdfx/Sources/**/*.{h,m,swift}'
   s.dependency 'Flutter'
-  s.platform = :ios, '8.0'
+  s.platform = :ios, '13.0'
 
-  # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'VALID_ARCHS[sdk=iphonesimulator*]' => 'x86_64' }
   s.swift_version = '5.0'
 end

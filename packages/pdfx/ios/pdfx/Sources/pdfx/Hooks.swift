@@ -1,4 +1,5 @@
 #if os(iOS)
+import UIKit
 
 extension UIColor {
     convenience init(hexString: String) {
@@ -21,6 +22,7 @@ extension UIColor {
 }
 
 #elseif os(macOS)
+import AppKit
 
 extension NSColor {
     convenience init(hexString: String) {
@@ -43,6 +45,8 @@ extension NSColor {
 }
 
 #endif
+
+import CoreGraphics
 
 extension CGPDFPage {
   func getRotatedSize() -> CGSize {

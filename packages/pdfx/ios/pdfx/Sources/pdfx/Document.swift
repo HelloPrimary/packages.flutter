@@ -1,3 +1,10 @@
+#if os(iOS)
+import UIKit
+#elseif os(macOS)
+import AppKit
+#endif
+import CoreGraphics
+
 class Document {
     let id: String
     let renderer: CGPDFDocument

@@ -24,8 +24,11 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 def agpMajor = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION.tokenize('.')[0].toInteger()
+// android.builtInKotlin lets a project opt out of AGP 9's built-in Kotlin and fall back to the
+// standalone plugin, so it must be honored in addition to the AGP version.
+def builtInKotlin = agpMajor >= 9 && project.findProperty('android.builtInKotlin') != 'false'
 
-if (agpMajor < 9) {
+if (!builtInKotlin) {
     apply plugin: 'kotlin-android'
 }
 

@@ -53,17 +53,9 @@ android {
         targetCompatibility JavaVersion.VERSION_11
     }
 
-    if (builtInKotlin) {
-        // JvmTarget.JVM_11 needs KGP 1.8.0+; only safe here because AGP 9's built-in Kotlin
-        // doesn't use this module's own pinned kotlin_version.
-        kotlin {
-            compilerOptions {
-                jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
-            }
-        }
-    } else {
-        kotlinOptions {
-            jvmTarget = '11'
+    kotlin {
+        compilerOptions {
+            jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
         }
     }
 }

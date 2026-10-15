@@ -254,7 +254,7 @@ class _PdfViewPinchState extends State<PdfViewPinch>
         page.rect = Rect.fromLTWH(left, _padding, w, h);
         left += w + _padding;
       }
-      _docSize = Size(left, viewSize.height);
+      _docSize = Size(max(left, viewSize.width), viewSize.height);
     } else {
       var top = _padding;
       for (int i = 0; i < _pages.length; i++) {
@@ -264,7 +264,7 @@ class _PdfViewPinchState extends State<PdfViewPinch>
         page.rect = Rect.fromLTWH(_padding, top, w, h);
         top += h + _padding;
       }
-      _docSize = Size(viewSize.width, top);
+      _docSize = Size(viewSize.width, max(top, viewSize.height));
     }
   }
 
@@ -291,9 +291,10 @@ class _PdfViewPinchState extends State<PdfViewPinch>
         -m.row0[3], -m.row1[3], _lastViewSize!.width, _lastViewSize!.height);
 
     if (_lastViewSize?.height != null) {
-      final rawDocumentProgress =
-          ((exposed.bottom / r - _lastViewSize!.height) /
-              (_docSize!.height - _lastViewSize!.height));
+      final scrollableHeight = _docSize!.height - _lastViewSize!.height;
+      final rawDocumentProgress = scrollableHeight <= 0
+          ? 1.0
+          : (exposed.bottom / r - _lastViewSize!.height) / scrollableHeight;
       const precisionFactor = 10000;
       _controller._documentProgress =
           ((rawDocumentProgress * precisionFactor).round() / precisionFactor)
